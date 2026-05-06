@@ -61,3 +61,7 @@ def main():
             break
         name, severity = patient
         print(f"Now treating: {name} (Severity {severity})")
+
+
+if __name__ == "__main__":
+    main()
