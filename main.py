@@ -1,5 +1,6 @@
 from binary_expression_tree import BinaryExpressionTree
 
+
 postfix_expressions = [
     "5 3 +",
     "8 2 - 3 +",
@@ -26,3 +27,5 @@ for expr in postfix_expressions:
     print(f"Infix Expression: {infix}")
     print(f"Postfix Expression: {postfix}")
     print(f"Evaluated Result: {result}\n")
+
+
