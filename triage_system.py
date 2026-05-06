@@ -14,8 +14,8 @@ class TriageSystem:
         cls._arrival_counter += 1
         return order
     #Add patient name and severity of issue
-        def AddPatient(self, name, severity):
-               if not name or not isinstance(name, str):
+    def AddPatient(self, name, severity):
+        if not name or not isinstance(name, str):
             raise ValueError("Name must be a non-empty string.")
         if not isinstance(severity, int) or severity < 1 or severity > 5:
             raise ValueError("Severity must be an integer between 1 and 5.")
