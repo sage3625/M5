@@ -1,4 +1,5 @@
 from binary_expression_tree import BinaryExpressionTree
+from triage_system import TriageSystem
 
 
 postfix_expressions = [
@@ -29,7 +30,6 @@ for expr in postfix_expressions:
     print(f"Evaluated Result: {result}\n")
 
 
-from triage_system import TriageSystem
 
 def main():
     triage = TriageSystem()
