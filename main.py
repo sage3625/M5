@@ -50,6 +50,7 @@ def main():
     for name, severity in patients:
         triage.AddPatient(name, severity)
 
+    print("="*30 + "\n")
     print("----- Hospital Triage System -----\n")
     print("="*30 + "\n")
     print("Processing patients:\n")
