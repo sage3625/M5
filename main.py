@@ -29,3 +29,35 @@ for expr in postfix_expressions:
     print(f"Evaluated Result: {result}\n")
 
 
+from triage_system import TriageSystem
+
+def main():
+    triage = TriageSystem()
+
+    # Test data
+    patients = [
+        ("Sofia", 5),
+        ("Bob", 2),
+        ("Charlie", 4),
+        ("Diana", 3),
+        ("Eli", 1),
+        ("Tom", 4),
+        ("Alice", 5),
+        ("Rachel", 4),
+    ]
+
+    # Add patients
+    for name, severity in patients:
+        triage.AddPatient(name, severity)
+
+    print("----- Hospital Triage System -----\n")
+    print("="*30 + "\n")
+    print("Processing patients:\n")
+
+    # Process in priority order
+    while not triage.IsEmpty():
+        patient = triage.ProcessNext()
+        if patient is None:
+            break
+        name, severity = patient
+        print(f"Now treating: {name} (Severity {severity})")

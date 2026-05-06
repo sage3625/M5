@@ -1,3 +1,5 @@
+import heapq
+
 class TriageSystem:
    #create a class to include patient name and evaluate based on severity
     _arrival_counter = 0  # class-level counter
