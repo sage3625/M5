@@ -109,4 +109,57 @@ main:
    - postfix = postfix_traversal()  
    - result = evaluate_tree()  
    - print infix, postfix, result  
+
+
    
+TriageSystem Class
+TriageSystem:
+•	private heap queue
+•	class level arrival counter
+
+Constructor
+Create a new TriageSystem:
+•	set queue to empty list
+•	arrival counter already exists at class level
+
+AddPatient(name, severity)
+1.	if name is empty ► error
+2.	if severity not between 1 and 5 ► error
+3.	arrival_order = next arrival counter value
+4.	priority = (-severity, arrival_order)
+(negative severity makes higher severity come first)
+5.	push (priority, name, severity) into heap
+
+ProcessNext()
+1.	if queue is empty ► return None
+2.	pop top item from heap
+3.	return (name, severity)
+
+PeekNext()
+1.	if queue is empty ► return None
+2.	look at heap[0] without removing
+3.	return (name, severity)
+
+IsEmpty()
+Return True if queue size is 0, otherwise False
+
+Size()
+Return number of patients in queue
+
+Clear()
+Set queue to empty list
+
+Static: NextArrivalOrder()
+1.	read current arrival counter
+2.	increment counter
+3.	return old value
+
+Main Program
+1.	create a TriageSystem
+2.	define list of patients with names and severities
+3.	for each patient:
+o	call AddPatient(name, severity)
+4.	print “Processing patients:”
+5.	while triage system is not empty:
+o	patient = ProcessNext()
+o	print “Now treating: name (Severity severity)”
