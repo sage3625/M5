@@ -1,0 +1,112 @@
+#Binary Expression Tree Project**
+
+##TreeNode Structure
+TreeNode:
+- value  
+- left  
+- right  
+
+
+# BinaryExpressionTree Class
+
+##Constructor
+BinaryExpressionTree():
+- root = null
+
+
+
+#Build Tree From Postfix Expression
+build_from_postfix(postfix_string):
+
+1. split postfix_string into tokens  
+2. create an empty Stack  
+
+3. for each token in tokens:
+   - if token is a number:
+     - create a new TreeNode with value = token  
+     - push node onto stack  
+
+   - else if token is an operator (+, -, *, /):
+     - if stack is empty → error  
+     - right_child = pop from stack  
+     - if stack is empty → error  
+     - left_child = pop from stack  
+     - create new TreeNode with value = operator  
+     - set node.left = left_child  
+     - set node.right = right_child  
+     - push node onto stack  
+
+   - else:
+     - error: invalid token  
+
+4. if stack is empty → error  
+5. root = pop from stack  
+6. if stack is not empty → error (extra tokens)
+
+
+
+#Evaluate Expression Tree (Recursive)
+evaluate_tree():
+- if root is null → error  
+- return evaluate(root)
+
+evaluate(node):
+
+1. if node.left is null AND node.right is null:
+   - return numeric value of node.value  
+
+2. x = evaluate(node.left)  
+3. y = evaluate(node.right)  
+4. op = node.value  
+
+5. if op = "+" return x + y  
+6. if op = "-" return x - y  
+7. if op = "*" return x * y  
+8. if op = "/"  
+   - if y = 0 → error  
+   - return x / y  
+
+
+
+#Inorder Traversal (Recursive)
+infix_traversal():
+- create empty list output  
+- call inorder(root, output)  
+- return output joined as string  
+
+inorder(node, output):
+1. if node is null: return  
+2. if node is an internal node: append "("  
+3. inorder(node.left, output)  
+4. append node.value + " "  
+5. inorder(node.right, output)  
+6. if node is an internal node: append ")"
+
+
+
+#Postorder Traversal (Recursive)
+postfix_traversal():
+- create empty list output  
+- call postorder(root, output)  
+- return output joined with spaces  
+
+postorder(node, output):
+1. if node is null: return  
+2. postorder(node.left, output)  
+3. postorder(node.right, output)  
+4. append node.value  
+
+
+
+#Main Program
+main:
+
+1. define list of postfix expressions  
+2. for each expression:
+   - create BinaryExpressionTree  
+   - build tree from postfix  
+   - infix = infix_traversal()  
+   - postfix = postfix_traversal()  
+   - result = evaluate_tree()  
+   - print infix, postfix, result  
+   
